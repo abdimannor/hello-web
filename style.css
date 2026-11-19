@@ -1,11 +1,11 @@
 /* Hello Web: the first page, typeset with one external stylesheet. */
 :root {
-  --paper: #fbf8f3;
-  --ink: #1d1b19;
-  --muted: #6b645c;
-  --accent: #b42318; /* the red line, AA contrast on paper */
+  --sky: #dceefe;
+  --ink: #14213d;
+  --muted: #3f5b78;
+  --accent: #b42318; /* the red line, AA contrast on sky */
   --link: #1d4ed8;
-  --rule: #e6dfd4;
+  --rule: #b6d4f0;
   --measure: 38rem;
 }
 
@@ -15,7 +15,12 @@ html { -webkit-text-size-adjust: 100%; }
 
 body {
   margin: 0;
-  background: var(--paper);
+  background-color: var(--sky);
+  /* a few soft clouds */
+  background-image:
+    radial-gradient(28rem 12rem at 12% 8%, rgb(255 255 255 / 0.7), transparent 70%),
+    radial-gradient(22rem 9rem at 88% 30%, rgb(255 255 255 / 0.55), transparent 70%),
+    radial-gradient(30rem 12rem at 30% 95%, rgb(255 255 255 / 0.45), transparent 70%);
   color: var(--ink);
   font: 400 1.125rem/1.65 Georgia, "Iowan Old Style", "Times New Roman", serif;
 }
@@ -83,7 +88,7 @@ a:focus-visible { outline: 3px solid var(--link); outline-offset: 3px; border-ra
   background: #fff;
   border: 1px solid var(--rule);
   border-radius: 14px;
-  box-shadow: 0 1px 2px rgb(0 0 0 / 0.04), 0 8px 24px rgb(0 0 0 / 0.06);
+  box-shadow: 0 1px 2px rgb(20 33 61 / 0.05), 0 10px 28px rgb(20 33 61 / 0.1);
 }
 .kitten img {
   display: block;
