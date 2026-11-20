@@ -182,8 +182,8 @@ a:focus-visible { outline: 3px solid var(--link); outline-offset: 3px; border-ra
 .source-title { text-transform: none; letter-spacing: 0; text-align: left; color: var(--ink); margin: 0 0 1rem; font-size: 1.3rem; }
 .source-notes ol { margin: 0; padding: 0; list-style: none; counter-reset: n; display: grid; gap: .5rem; }
 .source-notes li { counter-increment: n; }
-.source-notes button { width: 100%; text-align: left; display: flex; gap: .6rem; line-height: 1.4; }
-.source-notes button::before { content: counter(n); font-weight: 900; color: #b42318; }
+.source-notes button { width: 100%; text-align: left; display: block; line-height: 1.5; }
+.source-notes button::before { content: counter(n); font-weight: 900; color: #b42318; margin-right: .6rem; }
 .source-notes code { font-size: .85em; background: var(--sky); padding: 0 .2em; border-radius: 3px; }
 .code {
   margin: 0; padding: 1.25rem 0; max-height: 26rem; overflow: auto;
