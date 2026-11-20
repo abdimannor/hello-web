@@ -67,6 +67,6 @@
   lab.querySelectorAll('[data-line]').forEach((b) => b.addEventListener('click', () => {
     code.querySelectorAll('.ln.is-hit').forEach((l) => l.classList.remove('is-hit'));
     const hit = code.querySelector('.ln[data-n="' + b.dataset.line + '"]');
-    if (hit) { hit.classList.add('is-hit'); hit.scrollIntoView({ block: 'nearest', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); }
+    if (hit) { hit.classList.add('is-hit'); hit.scrollIntoView({ block: 'nearest', behavior: document.documentElement.dataset.motion === 'on' ? 'smooth' : 'auto' }); }
   }));
 })();

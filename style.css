@@ -7,6 +7,9 @@
   --link: #1d4ed8;
   --rule: #b6d4f0;
   --measure: 38rem;
+  --course-bg: #14213d;
+  --course-ink: #dceefe;
+  --course-accent: #ffd166;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -239,3 +242,9 @@ a:focus-visible { outline: 3px solid var(--link); outline-offset: 3px; border-ra
   color: var(--ink); background: #fff; border: 2px solid var(--ink); border-radius: 999px;
 }
 @media (max-width: 48rem) { .fix-work { grid-template-columns: 1fr; } }
+
+/* Motion: on when the switch (or, without a choice, the OS) says so. */
+:root[data-motion="on"] { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: no-preference) {
+  :root:not([data-motion]) { scroll-behavior: smooth; }
+}
