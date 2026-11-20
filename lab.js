@@ -35,7 +35,7 @@
       last = re.lastIndex;
     }
     out += '<span class="t-text">' + esc(src.slice(last)) + '</span>';
-    return out.split('\n').map((l, i) => '<span class="ln" data-n="' + (i + 1) + '">' + (l || ' ') + '</span>').join('\n');
+    return out.split('\n').map((l, i) => '<span class="ln" data-n="' + (i + 1) + '">' + (l || ' ') + '</span>').join('');
   }
 
   const code = lab.querySelector('#then-code');
