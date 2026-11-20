@@ -13,8 +13,19 @@
   <meta name="twitter:title" content="Hello Web">
   <meta name="twitter:description" content="The very first HTML page: headings, paragraphs, colour, an image and a link.">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="course.css">
 </head>
 <body>
+  <nav class="course-bar" lang="sv" aria-label="Kursen">
+    <p class="course-name">Kurs</p>
+    <ol>
+      <li><a href="https://hello-web-kappa.vercel.app/" aria-current="page"><span class="course-num">Lektion 1</span> Hello Web<span class="course-mark" hidden> &#10003; Klar</span></a></li>
+      <li><a href="https://tech-world-zeta.vercel.app/"><span class="course-num">Lektion 2</span> Tech World<span class="course-mark" hidden> &#10003; Klar</span></a></li>
+      <li><a href="https://link-lab-flax.vercel.app/"><span class="course-num">Lektion 3</span> Link Lab<span class="course-mark" hidden> &#10003; Klar</span></a></li>
+      <li><a href="https://dress-code-bay.vercel.app/"><span class="course-num">Lektion 4</span> Dress Code<span class="course-mark" hidden> &#10003; Klar</span></a></li>
+    </ol>
+    <span class="course-motion"><button type="button" aria-pressed="false">R&ouml;relse</button></span>
+  </nav>
   <main class="page">
     <h1>Hej och välkommen, detta är en stor rubrik</h1>
     <p class="lead">Och detta är vanlig löpande text (brödtext)</p>
@@ -94,7 +105,12 @@
       </div>
     </div>
   </section>
+  <nav class="course-next" lang="sv" aria-label="N&auml;sta lektion">
+    <p>N&auml;sta lektion</p>
+    <a href="https://tech-world-zeta.vercel.app/">Lektion 2: Tech World &rarr;</a>
+  </nav>
   <script src="lab.js" defer></script>
   <script src="challenge.js" defer></script>
+  <script src="course.js" defer></script>
 </body>
 </html>
