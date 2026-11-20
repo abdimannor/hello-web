@@ -3,6 +3,8 @@
   'use strict';
   const ORIGINAL = "<!DOCTYPE html>\n<html>\n<head>\n\t<meta charset=\"utf-8\">\n\t<title>Mahads HTML<\/title>\n<\/head>\n<body>\n\t<h1>Hej och välkommen, detta är en stor rubrik<\/h1>\n\t<p>Och detta är vanlig löpande text (brödtext)<\/p>\n\t<p style=\"color:red;\">Hur gör man när man vill ha 2 olika rader med vanlig löpande text, där andra raden är röd?<\/p>\n\t<h3>Ibland vill man ha en mellanstor rubrik<\/h3>\n\t<a href=\"http://www.aftonbladet.se\">och ibland vill man läsa nyheterna på Aftonbladets hemsida<\/a>\n\n\t<center><h5>Ibland vill man ha en mindre centrerad rubrik<\/h5><\/center>\n\t<p style=\"font-family: 'Comic Sans Ms';\"><img src=\"katt.jpg\"> Ibland vill man bara titta på en söt kattunge, men använda den snyggare fonten Comic Sans Ms<\/p>\n<\/body>\n<\/html>\n";
 
+  window.HELLO_ORIGINAL = ORIGINAL;
+
   // Inside the 'now' frame the lab itself is hidden, so the page does not nest forever.
   if (window.self !== window.top) {
     document.documentElement.classList.add('is-embedded');
