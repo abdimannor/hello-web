@@ -204,3 +204,38 @@ a:focus-visible { outline: 3px solid var(--link); outline-offset: 3px; border-ra
   .source { grid-template-columns: 1fr; }
   .stage { height: 70vh; box-shadow: 6px 6px 0 var(--ink); }
 }
+
+/* ---- challenge: fix my first page ---- */
+.fix[hidden] { display: none; }
+.fix { max-width: 76rem; margin: 2rem auto 5rem; padding: 0 1.5rem; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.fix .fix-title {
+  border: 0; padding: 0; margin: 0 0 .75rem;
+  font-size: clamp(2.6rem, 9vw, 5.5rem); font-weight: 900; letter-spacing: -.045em; color: var(--ink);
+}
+.fix-tasks { list-style: none; margin: 0 auto 1rem; padding: 0; max-width: 52rem; display: grid; gap: .6rem; }
+.fix-tasks li {
+  display: grid; grid-template-columns: auto 1fr auto; gap: .9rem; align-items: center;
+  padding: .85rem 1.1rem; background: #fff; border: 2px solid var(--rule); border-radius: .9rem;
+}
+.fix-dot { width: 1.1rem; height: 1.1rem; border-radius: 50%; border: 3px solid var(--accent); }
+.fix-state { font-style: normal; font-weight: 800; font-size: .85rem; color: var(--accent); }
+.fix-tasks li.is-ok { border-color: #157347; background: #e8f7ee; }
+.fix-tasks li.is-ok .fix-dot { background: #157347; border-color: #157347; }
+.fix-tasks li.is-ok .fix-state { color: #0f5132; }
+.fix-score { text-align: center; font-weight: 800; font-size: 1.1rem; margin: 0 0 1.25rem; }
+.fix.is-solved .fix-score { color: #0f5132; }
+.fix-work { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.fix-pane { display: flex; flex-direction: column; gap: .5rem; min-width: 0; }
+.fix-pane label, .fix-label { font-weight: 800; font-size: .9rem; }
+.fix-pane textarea {
+  width: 100%; min-height: 26rem; resize: vertical; padding: 1rem;
+  font: .85rem/1.55 ui-monospace, Menlo, monospace; color: #e6edf3; background: #0d1b2e;
+  border: 0; border-radius: .9rem; tab-size: 2;
+}
+.fix-pane textarea:focus-visible { outline: 3px solid var(--link); outline-offset: 2px; }
+.fix-preview { width: 100%; min-height: 26rem; flex: 1; border: 2px solid var(--rule); border-radius: .9rem; background: #fff; }
+.fix-reset {
+  align-self: flex-start; font: inherit; font-weight: 700; padding: .5rem 1rem; cursor: pointer;
+  color: var(--ink); background: #fff; border: 2px solid var(--ink); border-radius: 999px;
+}
+@media (max-width: 48rem) { .fix-work { grid-template-columns: 1fr; } }
