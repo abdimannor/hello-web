@@ -41,6 +41,7 @@
     }
     score.textContent = done === 3 ? 'Alla tre klara. Sidan är lagad.' : done + ' av 3 klara';
     root.classList.toggle('is-solved', done === 3);
+    if (done === 3 && window.courseDone) window.courseDone();
     frame.srcdoc = /<head>/i.test(src) ? src.replace(/<head>/i, '<head>' + base) : base + src;
   }
   area.addEventListener('input', () => { clearTimeout(timer); timer = setTimeout(run, 150); });
