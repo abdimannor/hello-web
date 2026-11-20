@@ -70,6 +70,31 @@
       <pre class="code" tabindex="0" aria-label="Källkoden från 2023"><code id="then-code"></code></pre>
     </div>
   </section>
+  <section class="fix" id="fix" aria-labelledby="fix-title" hidden>
+    <header class="lab-head">
+      <p class="lab-kicker">Utmaning</p>
+      <h2 id="fix-title" class="fix-title">Laga min första sida</h2>
+      <p class="lab-intro">Här är originalet från 2023 igen, nu redigerbart. Tre små uppgifter väntar. Skriv i koden, förhandsvisningen uppdateras direkt och varje kontroll blir grön när den är löst.</p>
+    </header>
+    <ol class="fix-tasks" id="fix-tasks">
+      <li data-task="order"><span class="fix-dot" aria-hidden="true"></span><span><strong>Rubrikordning:</strong> inga hoppade nivåer, efter <code>&lt;h1&gt;</code> kommer <code>&lt;h2&gt;</code>, inte <code>&lt;h3&gt;</code> eller <code>&lt;h5&gt;</code>.</span> <em class="fix-state">Ej klar</em></li>
+      <li data-task="alt"><span class="fix-dot" aria-hidden="true"></span><span><strong>Alt-text:</strong> kattbilden behöver ett <code>alt</code> som beskriver den.</span> <em class="fix-state">Ej klar</em></li>
+      <li data-task="center"><span class="fix-dot" aria-hidden="true"></span><span><strong>Utfasad tagg:</strong> ersätt <code>&lt;center&gt;</code> med CSS, till exempel <code>style="text-align:center"</code>.</span> <em class="fix-state">Ej klar</em></li>
+    </ol>
+    <p class="fix-score" id="fix-score" role="status" aria-live="polite"></p>
+    <div class="fix-work">
+      <div class="fix-pane">
+        <label for="fix-code">Källkod (redigerbar)</label>
+        <textarea id="fix-code" spellcheck="false" autocapitalize="off" autocomplete="off" rows="18"></textarea>
+        <button type="button" id="fix-reset" class="fix-reset">Börja om</button>
+      </div>
+      <div class="fix-pane">
+        <span class="fix-label" id="fix-preview-label">Förhandsvisning</span>
+        <iframe id="fix-preview" class="fix-preview" title="Förhandsvisning av din kod" sandbox=""></iframe>
+      </div>
+    </div>
+  </section>
   <script src="lab.js" defer></script>
+  <script src="challenge.js" defer></script>
 </body>
 </html>
