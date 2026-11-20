@@ -29,8 +29,50 @@
       <figcaption>Ibland vill man bara titta på en söt kattunge, men använda den snyggare fonten Comic Sans Ms</figcaption>
     </figure>
   </main>
+
+  <section class="lab" id="lab" aria-labelledby="lab-title" hidden>
+    <header class="lab-head">
+      <p class="lab-kicker">2023 &rarr; 2026</p>
+      <h2 id="lab-title">Då och nu</h2>
+      <p class="lab-intro">Samma text, två epoker. Till vänster originalet från 2023 med inline-stilar och &lt;center&gt;, till höger samma sida med en extern stilmall. Dra reglaget för att svepa mellan dem.</p>
+    </header>
+
+    <div class="wipe-controls">
+      <label for="wipe">Svep mellan 2023 och 2026</label>
+      <input type="range" id="wipe" min="0" max="100" step="1" value="50">
+      <output id="wipe-out" for="wipe"></output>
+      <div class="wipe-jumps" role="group" aria-label="Hoppa till">
+        <button type="button" data-wipe="100">2023</button>
+        <button type="button" data-wipe="50">Delad</button>
+        <button type="button" data-wipe="0">2026</button>
+      </div>
+    </div>
+
+    <div class="stage">
+      <iframe id="frame-now" class="frame frame-now" title="Sidan i dag, 2026" loading="lazy"></iframe>
+      <iframe id="frame-then" class="frame frame-then" title="Originalsidan från 2023" sandbox="" loading="lazy"></iframe>
+      <span class="stage-tag stage-tag-then" aria-hidden="true">2023</span>
+      <span class="stage-tag stage-tag-now" aria-hidden="true">2026</span>
+      <span class="stage-seam" aria-hidden="true"></span>
+    </div>
+
+    <div class="source">
+      <div class="source-notes">
+        <h3 class="source-title">Vad som ändrades</h3>
+        <ol>
+          <li><button type="button" data-line="10"><code>style="color:red;"</code> blev klassen <code>.red</code></button></li>
+          <li><button type="button" data-line="11">Den första <code>&lt;h3&gt;</code> blev en riktig <code>&lt;h2&gt;</code></button></li>
+          <li><button type="button" data-line="12">Länken fick ett eget stycke och <code>https</code></button></li>
+          <li><button type="button" data-line="14"><code>&lt;center&gt;&lt;h5&gt;</code> blev <code>&lt;h3&gt;</code> med <code>text-align</code></button></li>
+          <li><button type="button" data-line="15">Bild och mening delar nu en <code>&lt;figure&gt;</code> med alt-text</button></li>
+        </ol>
+      </div>
+      <pre class="code" tabindex="0" aria-label="Källkoden från 2023"><code id="then-code"></code></pre>
+    </div>
+  </section>
   <footer class="note">
     <p>&copy; 2026 Mahad Abdullahi</p>
   </footer>
+  <script src="lab.js" defer></script>
 </body>
 </html>
