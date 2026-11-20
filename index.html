@@ -5,22 +5,32 @@
   <meta name="robots" content="noindex">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hello Web</title>
-  <meta name="description" content="The very first HTML page — headings, paragraphs, inline color, images, and links.">
+  <meta name="description" content="The very first HTML page: headings, paragraphs, colour, an image and a link.">
   <meta property="og:title" content="Hello Web">
-  <meta property="og:description" content="The very first HTML page — headings, paragraphs, inline color, images, and links.">
+  <meta property="og:description" content="The very first HTML page: headings, paragraphs, colour, an image and a link.">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Hello Web">
-  <meta name="twitter:description" content="The very first HTML page — headings, paragraphs, inline color, images, and links.">
+  <meta name="twitter:description" content="The very first HTML page: headings, paragraphs, colour, an image and a link.">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<h1>Hej och välkommen, detta är en stor rubrik</h1>
-	<p>Och detta är vanlig löpande text (brödtext)</p>
-	<p style="color:red;">Hur gör man när man vill ha 2 olika rader med vanlig löpande text, där andra raden är röd?</p>
-	<h3>Ibland vill man ha en mellanstor rubrik</h3>
-	<a href="http://www.aftonbladet.se">och ibland vill man läsa nyheterna på Aftonbladets hemsida</a>
+  <main class="page">
+    <h1>Hej och välkommen, detta är en stor rubrik</h1>
+    <p class="lead">Och detta är vanlig löpande text (brödtext)</p>
+    <p class="red">Hur gör man när man vill ha 2 olika rader med vanlig löpande text, där andra raden är röd?</p>
 
-	<h5 style="text-align: center;">Ibland vill man ha en mindre centrerad rubrik</h5>
-	<p style="font-family: 'Comic Sans Ms';"><img src="katt.jpg" alt="En kattunge"> Ibland vill man bara titta på en söt kattunge, men använda den snyggare fonten Comic Sans Ms</p>
+    <h2>Ibland vill man ha en mellanstor rubrik</h2>
+    <p><a href="https://www.aftonbladet.se">och ibland vill man läsa nyheterna på Aftonbladets hemsida</a></p>
+
+    <h3>Ibland vill man ha en mindre centrerad rubrik</h3>
+    <figure class="kitten">
+      <img src="katt.jpg" alt="En liten kattunge som tittar in i kameran" width="270" height="186">
+      <figcaption>Ibland vill man bara titta på en söt kattunge, men använda den snyggare fonten Comic Sans Ms</figcaption>
+    </figure>
+  </main>
+  <footer class="note">
+    <p>&copy; 2026 Mahad Abdullahi</p>
+  </footer>
 </body>
 </html>

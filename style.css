@@ -1,0 +1,116 @@
+/* Hello Web: the first page, typeset with one external stylesheet. */
+:root {
+  --sky: #dceefe;
+  --ink: #14213d;
+  --muted: #3f5b78;
+  --accent: #b42318; /* the red line, AA contrast on sky */
+  --link: #1d4ed8;
+  --rule: #b6d4f0;
+  --measure: 38rem;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background-color: var(--sky);
+  /* a few soft clouds */
+  background-image:
+    radial-gradient(28rem 12rem at 12% 8%, rgb(255 255 255 / 0.7), transparent 70%),
+    radial-gradient(22rem 9rem at 88% 30%, rgb(255 255 255 / 0.55), transparent 70%),
+    radial-gradient(30rem 12rem at 30% 95%, rgb(255 255 255 / 0.45), transparent 70%);
+  color: var(--ink);
+  font: 400 1.125rem/1.65 Georgia, "Iowan Old Style", "Times New Roman", serif;
+}
+
+.page {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: clamp(2.5rem, 8vw, 6rem) 1.5rem 3rem;
+}
+
+h1, h2, h3 {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(2.1rem, 6vw, 3.4rem);
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  font-size: clamp(1.4rem, 3.5vw, 1.8rem);
+  font-weight: 700;
+  margin: 3rem 0 1rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--rule);
+}
+
+h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 3rem 0 1.25rem;
+}
+
+p { margin: 0 0 1rem; }
+
+.lead { font-size: 1.3rem; }
+
+.red { color: var(--accent); }
+
+a {
+  color: var(--link);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible { outline: 3px solid var(--link); outline-offset: 3px; border-radius: 2px; }
+
+/* The kitten: image and its sentence belong together, so they share a figure. */
+.kitten {
+  margin: 0 auto;
+  max-width: 30rem;
+  display: grid;
+  grid-template-columns: minmax(0, 270px) 1fr;
+  gap: 1.25rem;
+  align-items: center;
+  padding: 1rem;
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  box-shadow: 0 1px 2px rgb(20 33 61 / 0.05), 0 10px 28px rgb(20 33 61 / 0.1);
+}
+.kitten img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+.kitten figcaption {
+  font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+@media (max-width: 34rem) {
+  .kitten { grid-template-columns: 1fr; text-align: center; }
+  .kitten img { max-width: 270px; margin: 0 auto; }
+}
+
+.note {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 0 1.5rem 3rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.note p { margin: 0; padding-top: 1.5rem; border-top: 1px solid var(--rule); }

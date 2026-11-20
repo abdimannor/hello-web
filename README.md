@@ -2,17 +2,15 @@
 
 My first HTML page, from 2023, written at the very start of a web course. The text is in Swedish, and each line describes the element it sits in: a large heading, a line of body text, a red line, a medium heading, a link, a small centred heading, and a kitten picture next to a line in Comic Sans. The point was to see what each basic tag does on its own before any stylesheet came into it.
 
-## What to look at
+## The reworked version
 
-Everything is in `index.html`, lines 17 to 24.
+The page has been rebuilt as a small, cleanly typeset page. The Swedish text is unchanged; the markup and styling around it are new. The original is in the git history (the commit before `rework/2026-11`).
 
-- **Heading levels.** The page goes `<h1>`, then `<h3>`, then `<h5>`. The levels were chosen for how big the text looks, not for the outline of the document. Later exercises separate the two: headings for structure, CSS for size.
-- **Inline styles.** The red paragraph (`style="color:red;"`, line 19) and the Comic Sans paragraph (line 24) are the first CSS in these exercises, written straight on the element. The [dress-code](https://github.com/abdimannor/dress-code) exercise compares this with the other two ways of adding CSS.
-- **An image inside a paragraph.** `katt.jpg` sits inline at the start of a `<p>`, so the sentence continues on the same line as the picture instead of starting below it.
-- **A plain link** to Aftonbladet (line 21), with no styling, so it shows the browser's default blue and underline.
-- **Centring.** The original used the `<center>` tag, which is obsolete in HTML5. It is now `text-align: center` on the `<h5>`, which looks the same.
-
-The image also gained alt text, which the original lacked.
+- **Heading outline.** The original went `<h1>`, `<h3>`, `<h5>`, choosing levels by how big they looked. It now goes `<h1>`, `<h2>`, `<h3>`, and the sizes come from CSS.
+- **External stylesheet.** The inline `style` attributes are gone. The red line uses a `.red` class and all styling lives in `style.css`.
+- **The kitten as a figure.** The picture and its sentence sit in a `<figure>` with a `<figcaption>`, which keeps its Comic Sans. The image has width and height set, so the page does not jump while it loads.
+- **Responsive.** One readable column with fluid type; the figure stacks on narrow screens.
+- A short footer note says the page is reworked from the original.
 
 ## Open it locally
 
