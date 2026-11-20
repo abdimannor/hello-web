@@ -7,6 +7,9 @@
   --link: #1d4ed8;
   --rule: #b6d4f0;
   --measure: 38rem;
+  --course-bg: #14213d;
+  --course-ink: #dceefe;
+  --course-accent: #ffd166;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
