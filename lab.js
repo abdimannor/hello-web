@@ -20,7 +20,7 @@
     const re = /<!--[\s\S]*?-->|<!DOCTYPE[^>]*>|<\/?[a-zA-Z][^>]*>/g;
     let last = 0, m;
     while ((m = re.exec(src))) {
-      out += '<span class="t-text">' + esc(src.slice(last, m.index)) + '</span>';
+      out += esc(src.slice(last, m.index));
       const tok = m[0];
       if (tok.startsWith('<!--')) out += '<span class="t-com">' + esc(tok) + '</span>';
       else if (/^<!DOCTYPE/i.test(tok)) out += '<span class="t-doc">' + esc(tok) + '</span>';
@@ -34,7 +34,7 @@
       }
       last = re.lastIndex;
     }
-    out += '<span class="t-text">' + esc(src.slice(last)) + '</span>';
+    out += esc(src.slice(last));
     return out.split('\n').map((l, i) => '<span class="ln" data-n="' + (i + 1) + '">' + (l || ' ') + '</span>').join('');
   }
 
