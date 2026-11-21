@@ -1,50 +1,67 @@
 /* Webbkursen: shared tokens, course bar, quiet controls and lesson footer.
-   Identical in all four lessons; each site sets --course-accent (and --course-accent-dark for text in dark mode). */
+   Byte-identical in all four lessons. Each lesson sets only --accent and
+   --accent-text (AA text on the page) in its own stylesheet.
+   Pages whose own design is dark ask for the dark bar with
+   <html data-scheme="dark">; light-only pages pin it with data-scheme="light". */
 :root {
   --c-bg: #f6f7fb;
   --c-card: #fff;
   --c-ink: #151a2d;
   --c-muted: #59607a;
   --c-line: rgb(21 26 45 / .1);
-  --c-accent: var(--course-accent, #2f5bea);
-  --c-accent-text: var(--course-accent, #2f5bea);
+  --c-accent: var(--accent, #2f5bea);
+  --c-accent-text: var(--accent-text, var(--accent, #2f5bea));
   --c-shadow: 0 1px 2px rgb(0 0 0 / .05), 0 8px 24px rgb(20 30 60 / .06);
   --c-radius: 14px;
   --c-radius-code: 10px;
   --c-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --c-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
   --c-measure: 68ch;
+  color-scheme: light dark;
 }
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-scheme="light"]) {
     --c-bg: #0e1220;
     --c-card: #161b2e;
     --c-ink: #e6e9f5;
     --c-muted: #9aa1bd;
     --c-line: rgb(230 233 245 / .12);
-    --c-accent-text: var(--course-accent-dark, #8fa8ff);
     --c-shadow: 0 1px 2px rgb(0 0 0 / .3), 0 8px 24px rgb(0 0 0 / .25);
   }
 }
+:root[data-scheme="dark"] {
+  --c-bg: #0e1220;
+  --c-card: #161b2e;
+  --c-ink: #e6e9f5;
+  --c-muted: #9aa1bd;
+  --c-line: rgb(230 233 245 / .12);
+  --c-shadow: 0 1px 2px rgb(0 0 0 / .3), 0 8px 24px rgb(0 0 0 / .25);
+  color-scheme: dark;
+}
+:root[data-scheme="light"] { color-scheme: light; }
 
 /* ---- course bar ---- */
 .course-bar {
   display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1.75rem;
+  box-sizing: border-box;
   padding: .7rem clamp(1rem, 4vw, 2.5rem);
   background: var(--c-bg); color: var(--c-ink);
   border-bottom: 1px solid var(--c-line);
   font: 500 .875rem/1.3 var(--c-sans);
-  letter-spacing: 0;
+  letter-spacing: 0; text-transform: none; text-align: left;
 }
 .course-bar .course-name { margin: 0; font-weight: 750; font-size: .95rem; letter-spacing: -.01em; }
 .course-bar ol { display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; margin: 0; padding: 0; list-style: none; }
-.course-bar a { display: inline-flex; align-items: baseline; gap: .4rem; padding: .4rem 0; border-bottom: 2px solid transparent; }
+.course-bar li { margin: 0; padding: 0; max-width: none; }
+.course-bar li::before, .course-bar li::marker { content: none; }
+.course-bar a { display: inline-flex; align-items: center; gap: .4rem; padding: .4rem 0; border-bottom: 2px solid transparent; font: inherit; }
 .course-bar a:is(:link, :visited, :hover, :active) { color: var(--c-muted); background: transparent; text-decoration: none; }
 .course-bar a:hover { color: var(--c-ink); }
 .course-bar a:focus-visible { outline: 2px solid var(--c-accent); outline-offset: 2px; border-radius: 2px; }
 .course-bar a[aria-current="page"]:is(:link, :visited, :hover, :active) { color: var(--c-ink); font-weight: 650; border-bottom-color: var(--c-accent); }
 .course-bar .course-num { font: 500 .8em var(--c-mono); font-variant-numeric: tabular-nums; }
-.course-bar .course-mark { color: var(--c-accent-text); font-weight: 700; }
+.course-bar .course-mark { display: inline-flex; color: var(--c-accent-text); }
+.course-bar .course-mark svg { display: block; }
 .course-bar .course-mark[hidden] { display: none; }
 @media (max-width: 40rem) {
   .course-bar { gap: .25rem 1rem; }
@@ -54,23 +71,26 @@
 /* ---- quiet icon controls ---- */
 .course-controls { display: inline-flex; align-items: center; gap: .5rem; margin-left: auto; }
 .course-icon-btn {
-  display: inline-grid; place-items: center;
-  width: 34px; height: 34px; padding: 0; border-radius: 999px;
+  display: inline-grid; place-items: center; box-sizing: border-box;
+  width: 34px; height: 34px; margin: 0; padding: 0; border-radius: 999px;
   border: 1px solid color-mix(in srgb, currentColor 22%, transparent);
-  background: transparent; color: inherit; cursor: pointer;
+  background: transparent; color: inherit; cursor: pointer; box-shadow: none;
+  font: inherit;
   transition: background-color 150ms;
 }
 .course-icon-btn:hover, .course-icon-btn:focus-visible { background: color-mix(in srgb, currentColor 10%, transparent); }
 .course-icon-btn:focus-visible { outline: 2px solid var(--c-accent); outline-offset: 2px; }
 .course-icon-btn svg { display: block; }
+html[data-motion="off"] .course-icon-btn { transition: none; }
+/* Both icons ship in the markup; html[data-motion] (set before first paint) picks one. */
 .course-motion .icon-play { display: none; }
-.course-motion[aria-pressed="false"] .icon-play { display: block; }
-.course-motion[aria-pressed="false"] .icon-pause { display: none; }
+html[data-motion="off"] .course-motion .icon-play { display: block; }
+html[data-motion="off"] .course-motion .icon-pause { display: none; }
 
 /* ---- lesson footer: previous / next ---- */
 .course-next {
   display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
-  max-width: 76rem; margin: 5rem auto 0; padding: 2rem clamp(1rem, 4vw, 2.5rem) 3rem;
+  box-sizing: border-box; max-width: 76rem; margin: 5rem auto 0; padding: 2rem clamp(1rem, 4vw, 2.5rem) 3rem;
   border-top: 1px solid var(--c-line);
   font: 500 1rem/1.4 var(--c-sans); color: var(--c-ink);
 }
@@ -93,7 +113,7 @@
 
 /* ---- course complete card (course.js, last lesson only) ---- */
 .course-complete {
-  max-width: 76rem; margin: 4rem auto 0; padding: clamp(1.25rem, 4vw, 2.25rem);
+  box-sizing: border-box; max-width: 76rem; margin: 4rem auto 0; padding: clamp(1.25rem, 4vw, 2.25rem);
   background: var(--c-card); color: var(--c-ink); border-radius: var(--c-radius); box-shadow: var(--c-shadow);
   border-top: 4px solid var(--c-accent);
   font: 500 1rem/1.5 var(--c-sans);

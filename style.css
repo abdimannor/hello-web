@@ -3,13 +3,16 @@
   --sky: #dceefe;
   --ink: #14213d;
   --muted: #3f5b78;
-  --accent: #b42318; /* the red line, AA contrast on sky */
+  --red-line: #b42318; /* the red line, AA contrast on sky */
   --link: #1d4ed8;
   --rule: #b6d4f0;
   --measure: 38rem;
-  --course-bg: #14213d;
-  --course-ink: #dceefe;
-  --course-accent: #ffd166;
+  --accent: #2f5bea; /* lesson accent for the course bar */
+  --accent-text: #2f5bea;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root { --accent-text: #8fa8ff; }
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -69,7 +72,7 @@ p { margin: 0 0 1rem; }
 
 .lead { font-size: 1.3rem; }
 
-.red { color: var(--accent); }
+.red { color: var(--red-line); }
 
 a {
   color: var(--link);
