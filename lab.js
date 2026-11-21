@@ -47,7 +47,7 @@
   const thenFrame = lab.querySelector('#frame-then');
   const nowFrame = lab.querySelector('#frame-now');
   thenFrame.srcdoc = ORIGINAL.replace('<head>', '<head><base href="' + new URL('.', location.href).href + '">');
-  nowFrame.src = 'index.html';
+  nowFrame.src = 'original.html';
 
   const stage = lab.querySelector('.stage');
   const slider = lab.querySelector('#wipe');
