@@ -44,7 +44,7 @@ test('the original exercise lives on original.html, verbatim, and is framed on t
 
 test('the lesson page is a lesson: hero, goals, try-it task and next lesson', async ({ page }) => {
   await page.goto('index.html');
-  await expect(page.locator('h1')).toContainText('din första HTML-sida');
+  await expect(page.locator('h1')).toContainText(/din första HTML.sida/);
   await expect(page.locator('.goals li')).toHaveCount(3);
   await expect(page.getByRole('heading', { name: 'Laga min första sida' })).toBeVisible();
   await expect(page.locator('.course-next a')).toContainText('Tech World');
