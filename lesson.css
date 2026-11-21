@@ -38,12 +38,12 @@ code { font-family: var(--c-mono); font-size: .9em; }
 .card { background: var(--c-card); border: 1px solid var(--c-line); border-radius: var(--c-radius); box-shadow: var(--c-shadow); }
 
 /* ---- hero ---- */
-.hero { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: center; padding-top: clamp(3rem, 9vw, 7rem); }
-.hero h1 { font-size: clamp(2.6rem, 6.5vw, 5rem); letter-spacing: -.035em; line-height: 1.02; margin-bottom: 1.25rem; }
+.hero { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: center; padding-top: clamp(3rem, 9vw, 7rem); }
+.hero h1 { font-size: clamp(2.3rem, 5.6vw, 4.4rem); letter-spacing: -.035em; line-height: 1.02; margin-bottom: 1.25rem; }
 .hero h1 span { color: var(--c-accent-text); }
 .hero-lead { font-size: clamp(1.15rem, 2vw, 1.35rem); line-height: 1.5; color: var(--c-muted); max-width: 40ch; margin-bottom: 2rem; }
 .goals-title { font-size: .95rem; font-weight: 650; margin: 0 0 .6rem; letter-spacing: 0; }
-.goals { list-style: none; margin: 0 0 1.75rem; padding: 0; display: grid; gap: .55rem; max-width: 46ch; }
+.goals { list-style: none; margin: 0 0 1.75rem; padding: 0; display: grid; gap: .55rem; max-width: 52ch; }
 .goals li { display: grid; grid-template-columns: 1.5rem 1fr; gap: .5rem; align-items: start; }
 .goals li::before { content: ""; width: .55rem; height: .55rem; margin-top: .55rem; border-radius: 2px; background: var(--c-accent); }
 .meta { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; color: var(--c-muted); font-size: .95rem; margin: 0; }
