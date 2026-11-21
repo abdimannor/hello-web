@@ -14,7 +14,8 @@ The page is my first HTML exercise from 2023, written at the very start of a web
 
 ## On the site
 
-- **The page** (`index.html`): the 2023 text, rebuilt with semantic markup and one stylesheet.
+- **The lesson** (`index.html`): what the lesson teaches, the original in a browser frame, the core idea and the task.
+- **The original exercise** (`original.html`): the 2023 text, rebuilt with semantic markup and one stylesheet.
 - **Then and now:** the 2023 original beside today's page with a wipe slider and notes on each change.
 - **Laga min första sida:** fix the original in an editor with live preview; three checks (heading order, alt text, no `<center>`).
 - **Anatomi** (`anatomi.html`, new): the 2023 source shown as four computed layers, with a toggle to a semantic version of the same text:
