@@ -248,3 +248,11 @@ a:focus-visible { outline: 3px solid var(--link); outline-offset: 3px; border-ra
 @media (prefers-reduced-motion: no-preference) {
   :root:not([data-motion]) { scroll-behavior: smooth; }
 }
+
+/* Link to the anatomy page */
+.to-anatomy { max-width: 76rem; margin: 2rem auto 4rem; padding: 1.5rem; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background: var(--ink); color: var(--sky); border-radius: 14px; }
+.to-anatomy h2 { border: 0; padding: 0; margin: 0.25rem 0 0.5rem; }
+.to-anatomy .lab-kicker { color: var(--course-accent); }
+.to-anatomy a { color: var(--course-accent); font-weight: 700; }
+@media (min-width: 60rem) { .to-anatomy { margin-inline: auto; width: calc(100% - 3rem); } }
+.is-embedded .to-anatomy { display: none !important; }
