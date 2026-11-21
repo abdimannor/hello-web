@@ -17,6 +17,8 @@ function watch(page) {
 }
 
 async function axe(page, options = {}) {
+  // Let the entrance animations finish so contrast is measured on settled text.
+  await page.evaluate(() => Promise.all(document.getAnimations().map((a) => a.finished.catch(() => null))));
   await page.addScriptTag({ path: path.join(__dirname, '..', 'node_modules', 'axe-core', 'axe.min.js') });
   const result = await page.evaluate((opts) => window.axe.run(document, opts), options);
   const summary = result.violations.map((v) => `${v.id}: ${v.nodes.map((n) => n.target.join(' ')).join(', ')}`);
