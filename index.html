@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <script>(()=>{let m=null;try{m=localStorage.getItem('motion')}catch(e){}document.documentElement.dataset.motion=m==='off'?'off':'on'})()</script>
+  <title>Lektion 1: Hello Web | Webbkursen</title>
+  <meta name="description" content="Lektion 1 i Webbkursen: en första HTML-sida med rubriker, stycken, en länk och en bild, och varför rätt element betyder mer än hur det ser ut.">
+  <meta property="og:title" content="Hello Web">
+  <meta property="og:description" content="Lektion 1 i Webbkursen: en första HTML-sida med rubriker, stycken, en länk och en bild, och varför rätt element betyder mer än hur det ser ut.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hello Web">
+  <meta name="twitter:description" content="Lektion 1 i Webbkursen: en första HTML-sida med rubriker, stycken, en länk och en bild, och varför rätt element betyder mer än hur det ser ut.">
+  <meta property="og:image" content="https://hello-web-kappa.vercel.app/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Screenshot of the Hello Web page">
+  <meta name="twitter:image" content="https://hello-web-kappa.vercel.app/og.png">
+  <meta name="twitter:image:alt" content="Screenshot of the Hello Web page">
+  <link rel="stylesheet" href="course.css">
+  <link rel="stylesheet" href="lesson.css">
+</head>
+<body>
+  <nav class="course-bar" lang="sv" aria-label="Kursen">
+    <p class="course-name">Webbkursen</p>
+    <ol>
+      <li><a href="https://hello-web-kappa.vercel.app/" aria-current="page"><span class="course-num">1</span> <span class="course-title">Hello Web</span><span class="course-mark" hidden> &#10003;<span class="course-sr"> klar</span></span></a></li>
+      <li><a href="https://tech-world-zeta.vercel.app/"><span class="course-num">2</span> <span class="course-title">Tech World</span><span class="course-mark" hidden> &#10003;<span class="course-sr"> klar</span></span></a></li>
+      <li><a href="https://link-lab-flax.vercel.app/"><span class="course-num">3</span> <span class="course-title">Link Lab</span><span class="course-mark" hidden> &#10003;<span class="course-sr"> klar</span></span></a></li>
+      <li><a href="https://dress-code-bay.vercel.app/"><span class="course-num">4</span> <span class="course-title">Dress Code</span><span class="course-mark" hidden> &#10003;<span class="course-sr"> klar</span></span></a></li>
+    </ol>
+    <div class="course-controls">
+      <button type="button" class="course-icon-btn course-motion" aria-pressed="true" aria-label="Pausa r&ouml;relse" title="Pausa r&ouml;relse"><svg class="icon-pause" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><rect x="7" y="5.5" width="3.4" height="13" rx="1.2"/><rect x="13.6" y="5.5" width="3.4" height="13" rx="1.2"/></svg><svg class="icon-play" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M8 5.8v12.4a1 1 0 0 0 1.5.86l10-6.2a1 1 0 0 0 0-1.72l-10-6.2A1 1 0 0 0 8 5.8z"/></svg></button>
+    </div>
+  </nav>
+  <main>
+    <header class="hero wrap">
+      <div>
+        <p class="kicker rise" style="--i:0">Lektion 1 av 4</p>
+        <h1 class="rise" style="--i:1">Hello Web: <span>din första HTML-sida</span></h1>
+        <p class="hero-lead rise" style="--i:2">En webbsida byggs av element. Den här lektionen visar hur rubriker, stycken, länkar och bilder skrivs, och varför elementet du väljer betyder mer än hur det ser ut.</p>
+        <p class="goals-title rise" style="--i:3">Efter lektionen kan du</p>
+        <ul class="goals rise" style="--i:4">
+          <li>skriva en sida med rubriker, stycken, en länk och en bild</li>
+          <li>välja rubriknivå efter sidans struktur, inte efter textens storlek</li>
+          <li>ge en bild alt-text och ersätta utfasade taggar som <code>&lt;center&gt;</code> med CSS</li>
+        </ul>
+        <p class="meta rise" style="--i:5"><span>Cirka 30 minuter</span><span>Inga förkunskaper</span><a href="#fix">Hoppa till uppgiften</a></p>
+      </div>
+      <div class="hero-code card rise" style="--i:3" aria-label="Fyra element som lektionen handlar om" role="group">
+        <div class="hero-code-top"><span>original.html</span><span>4 element</span></div>
+        <ol>
+          <li style="--i:0"><span class="tag">&lt;h1&gt;</span><span class="what">Sidans huvudrubrik, en per sida</span></li>
+          <li style="--i:1"><span class="tag">&lt;p&gt;</span><span class="what">Ett stycke löpande text</span></li>
+          <li style="--i:2"><span class="tag">&lt;a&gt;</span><span class="what">En länk, med <code>href</code> till målet</span></li>
+          <li style="--i:3"><span class="tag">&lt;img&gt;</span><span class="what">En bild, med <code>alt</code> som beskriver den</span></li>
+        </ol>
+      </div>
+    </header>
+
+    <section class="section wrap" aria-labelledby="orig-title">
+      <div class="section-head">
+        <p class="kicker">Utgångspunkten</p>
+        <h2 id="orig-title">Originaluppgiften</h2>
+        <p>Allt i lektionen utgår från den här sidan: den första övningen i kursen. Varje rad beskriver elementet den står i.</p>
+      </div>
+      <div class="original">
+        <figure class="browser card" style="margin:0">
+          <div class="browser-top" aria-hidden="true"><span class="browser-dots"><i></i><i></i><i></i></span><span class="browser-url">hello-web-kappa.vercel.app/original.html</span></div>
+          <iframe src="original.html" title="Originaluppgiften, den första sidan från kursen" loading="lazy"></iframe>
+          <figcaption class="course-sr">Originaluppgiften visad i en ram.</figcaption>
+        </figure>
+        <div class="original-text">
+          <h3>Den första versionen från kursen</h3>
+          <p>Texten är skriven 2023 och står kvar ordagrant. Sidan visar sex grundelement:</p>
+          <ul class="facts">
+            <li><code>&lt;h1&gt;</code>, <code>&lt;h2&gt;</code>, <code>&lt;h3&gt;</code>: tre rubriknivåer</li>
+            <li><code>&lt;p&gt;</code>: stycken, ett av dem rött</li>
+            <li><code>&lt;a&gt;</code>: en länk till en annan webbplats</li>
+            <li><code>&lt;img&gt;</code>: kattungen, med en bildtext i Comic Sans</li>
+          </ul>
+          <p><a href="original.html">Öppna originalet i egen flik &rarr;</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap" aria-labelledby="idea-title">
+      <div class="section-head">
+        <p class="kicker">Kärnidén</p>
+        <h2 id="idea-title">Elementet bär betydelsen, CSS bär utseendet</h2>
+        <p>Sidan skrevs först för ögat: rubriknivåer valdes efter storlek och centreringen kom från en utfasad tagg. På skärmen ser det rätt ut. För en skärmläsare, en sökmotor eller en webbläsare som läser strukturen blir det fel. Tre ändringar räcker för att laga det.</p>
+      </div>
+      <div class="idea">
+        <div class="card"><p class="pair"><span class="was">&lt;h3&gt;</span><span class="now">&lt;h2&gt;</span></p><h3>Rubriker i ordning</h3><p>Efter <code>&lt;h1&gt;</code> kommer <code>&lt;h2&gt;</code>. Storleken styrs med CSS, inte med rubriknivån.</p></div>
+        <div class="card"><p class="pair"><span class="was">&lt;img&gt;</span><span class="now">alt="…"</span></p><h3>Bilder med alt-text</h3><p>Utan <code>alt</code> vet en skärmläsare inte vad bilden visar och kan läsa upp filnamnet.</p></div>
+        <div class="card"><p class="pair"><span class="was">&lt;center&gt;</span><span class="now">text-align</span></p><h3>Utseende i CSS</h3><p><code>&lt;center&gt;</code> är utfasat. Samma effekt får du med <code>text-align: center</code>.</p></div>
+      </div>
+  <div class="lab" id="lab" hidden>
+    <header class="lab-head">
+            <h3 id="lab-title">Då och nu: svep mellan 2023 och i dag</h3>
+      <p class="lab-intro">Samma text, två epoker. Till vänster koden som den skrevs 2023, med inline-stilar och &lt;center&gt;. Till höger samma text med semantiska element och en extern stilmall. Dra reglaget för att svepa mellan dem.</p>
+    </header>
+
+    <div class="wipe-controls">
+      <label for="wipe">Svep mellan 2023 och 2026</label>
+      <input type="range" id="wipe" min="0" max="100" step="1" value="50">
+      <output id="wipe-out" for="wipe"></output>
+      <div class="wipe-jumps" role="group" aria-label="Hoppa till">
+        <button type="button" data-wipe="100">2023</button>
+        <button type="button" data-wipe="50">Delad</button>
+        <button type="button" data-wipe="0">I dag</button>
+      </div>
+    </div>
+
+    <div class="stage">
+      <iframe id="frame-now" class="frame frame-now" title="Originaluppgiften med semantisk kod och en stilmall" loading="lazy"></iframe>
+      <iframe id="frame-then" class="frame frame-then" title="Originalsidan från 2023" sandbox="" loading="lazy"></iframe>
+      <span class="stage-tag stage-tag-then" aria-hidden="true">2023</span>
+      <span class="stage-tag stage-tag-now" aria-hidden="true">I dag</span>
+      <span class="stage-seam" aria-hidden="true"></span>
+    </div>
+
+    <div class="source">
+      <div class="source-notes">
+        <h4 class="source-title">Vad som ändrades</h4>
+        <ol>
+          <li><button type="button" data-line="10"><code>style="color:red;"</code> blev klassen <code>.red</code></button></li>
+          <li><button type="button" data-line="11">Den första <code>&lt;h3&gt;</code> blev en riktig <code>&lt;h2&gt;</code></button></li>
+          <li><button type="button" data-line="12">Länken fick ett eget stycke och <code>https</code></button></li>
+          <li><button type="button" data-line="14"><code>&lt;center&gt;&lt;h5&gt;</code> blev <code>&lt;h3&gt;</code> med <code>text-align</code></button></li>
+          <li><button type="button" data-line="15">Bild och mening delar nu en <code>&lt;figure&gt;</code> med alt-text</button></li>
+        </ol>
+      </div>
+      <pre class="code" tabindex="0" aria-label="Källkoden från 2023"><code id="then-code"></code></pre>
+    </div>
+  </div>
+
+      <div class="deeper card">
+        <div class="deeper-text">
+          <p class="kicker">Fördjupning</p>
+          <h3>Så läser en skärmläsare sidan</h3>
+          <p>Samma sida från 2023 som DOM-träd, rubrikstruktur, landmärken och tillgänglighetsträd, bredvid en semantisk version. Byt version och se vad som ändras.</p>
+          <p><a href="anatomi.html">Öppna anatomin &rarr;</a></p>
+        </div>
+        <ol class="mini" aria-label="Rubrikstrukturen i originalet från 2023">
+          <li><span class="lvl">h1</span> Hej och välkommen</li>
+          <li><span class="lvl">h3</span> Ibland vill man ha en mellanstor … <span class="skip">hoppar över h2</span></li>
+          <li><span class="lvl">h5</span> Ibland vill man ha en mindre … <span class="skip">hoppar över h4</span></li>
+          <li class="sr">”bild, inget namn”, läser skärmläsaren om kattungen.</li>
+        </ol>
+      </div>
+    </section>
+
+  <section class="fix section wrap" id="fix" aria-labelledby="fix-title" hidden>
+    <header class="section-head">
+      <p class="kicker">Prova själv</p>
+      <h2 id="fix-title">Laga min första sida</h2>
+      <p>Här är originalet från 2023 igen, nu redigerbart. Tre små uppgifter väntar. Skriv i koden, förhandsvisningen uppdateras direkt och varje kontroll blir grön när den är löst.</p>
+    </header>
+    <ol class="fix-tasks" id="fix-tasks">
+      <li data-task="order"><span class="fix-dot" aria-hidden="true"></span><span><strong>Rubrikordning:</strong> inga hoppade nivåer, efter <code>&lt;h1&gt;</code> kommer <code>&lt;h2&gt;</code>, inte <code>&lt;h3&gt;</code> eller <code>&lt;h5&gt;</code>.</span> <em class="fix-state">Ej klar</em></li>
+      <li data-task="alt"><span class="fix-dot" aria-hidden="true"></span><span><strong>Alt-text:</strong> kattbilden behöver ett <code>alt</code> som beskriver den.</span> <em class="fix-state">Ej klar</em></li>
+      <li data-task="center"><span class="fix-dot" aria-hidden="true"></span><span><strong>Utfasad tagg:</strong> ersätt <code>&lt;center&gt;</code> med CSS, till exempel <code>style="text-align:center"</code>.</span> <em class="fix-state">Ej klar</em></li>
+    </ol>
+    <p class="fix-score" id="fix-score" role="status" aria-live="polite"></p>
+    <div class="fix-work">
+      <div class="fix-pane">
+        <label for="fix-code">Källkod (redigerbar)</label>
+        <textarea id="fix-code" spellcheck="false" autocapitalize="off" autocomplete="off" rows="18"></textarea>
+        <button type="button" id="fix-reset" class="fix-reset">Börja om</button>
+      </div>
+      <div class="fix-pane">
+        <span class="fix-label" id="fix-preview-label">Förhandsvisning</span>
+        <iframe id="fix-preview" class="fix-preview" title="Förhandsvisning av din kod" sandbox=""></iframe>
+      </div>
+    </div>
+  </section>
+  </main>
+  <nav class="course-next" lang="sv" aria-label="F&ouml;reg&aring;ende och n&auml;sta lektion">
+    <a class="course-next-to" href="https://tech-world-zeta.vercel.app/"><span class="course-next-label">N&auml;sta lektion</span><span class="course-next-title">2 Tech World &rarr;</span></a>
+  </nav>
+  <script src="lab.js" defer></script>
+  <script src="challenge.js" defer></script>
+  <script src="course.js" defer></script>
+</body>
+</html>
