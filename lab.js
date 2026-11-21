@@ -47,7 +47,7 @@
   const thenFrame = lab.querySelector('#frame-then');
   const nowFrame = lab.querySelector('#frame-now');
   thenFrame.srcdoc = ORIGINAL.replace('<head>', '<head><base href="' + new URL('.', location.href).href + '">');
-  nowFrame.src = 'index.html';
+  nowFrame.src = 'original.html';
 
   const stage = lab.querySelector('.stage');
   const slider = lab.querySelector('#wipe');
@@ -57,7 +57,9 @@
     out.value = v >= 99 ? 'Bara 2023' : v <= 1 ? 'Bara 2026' : Math.round(v) + ' % 2023, ' + Math.round(100 - v) + ' % 2026';
     lab.querySelectorAll('[data-wipe]').forEach((b) => b.setAttribute('aria-pressed', String(Number(b.dataset.wipe) === Number(v))));
   }
-  slider.addEventListener('input', () => setWipe(Number(slider.value)));
+  slider.addEventListener('input', () => { stage.classList.add('is-dragging'); setWipe(Number(slider.value)); });
+  slider.addEventListener('change', () => stage.classList.remove('is-dragging'));
+  lab.querySelectorAll('[data-wipe]').forEach((b) => b.addEventListener('pointerdown', () => stage.classList.remove('is-dragging')));
   lab.querySelectorAll('[data-wipe]').forEach((b) => b.addEventListener('click', () => {
     slider.value = b.dataset.wipe; setWipe(Number(b.dataset.wipe));
   }));

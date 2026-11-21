@@ -3,13 +3,16 @@
   --sky: #dceefe;
   --ink: #14213d;
   --muted: #3f5b78;
-  --accent: #b42318; /* the red line, AA contrast on sky */
+  --red-line: #b42318; /* the red line, AA contrast on sky */
   --link: #1d4ed8;
   --rule: #b6d4f0;
   --measure: 38rem;
-  --course-bg: #14213d;
-  --course-ink: #dceefe;
-  --course-accent: #ffd166;
+  --accent: #2f5bea; /* lesson accent for the course bar */
+  --accent-text: #2f5bea;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root { --accent-text: #8fa8ff; }
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -69,7 +72,7 @@ p { margin: 0 0 1rem; }
 
 .lead { font-size: 1.3rem; }
 
-.red { color: var(--accent); }
+.red { color: var(--red-line); }
 
 a {
   color: var(--link);
@@ -117,142 +120,3 @@ a:focus-visible { outline: 3px solid var(--link); outline-offset: 3px; border-ra
   font-size: 0.9rem;
 }
 .note p { margin: 0; padding-top: 1.5rem; border-top: 1px solid var(--rule); }
-
-/* ===== Then and now lab ===== */
-.is-embedded .lab { display: none !important; }
-.lab[hidden] { display: none; }
-.lab {
-  max-width: 76rem;
-  margin: 2rem auto 4rem;
-  padding: 0 1.5rem;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-}
-.lab-head { max-width: var(--measure); margin: 0 auto 2rem; text-align: center; }
-.lab-kicker {
-  display: inline-block; margin: 0 0 .75rem; padding: .3rem .9rem;
-  font: 800 .8rem/1 ui-monospace, Menlo, monospace; letter-spacing: .2em;
-  color: #fff; background: linear-gradient(90deg, #b42318, #1d4ed8); border-radius: 999px;
-}
-.lab h2 {
-  border: 0; padding: 0; margin: 0 0 .75rem;
-  font-size: clamp(3rem, 11vw, 7rem); font-weight: 900; letter-spacing: -.05em;
-  background: linear-gradient(100deg, #b42318 0 45%, #1d4ed8 55% 100%);
-  -webkit-background-clip: text; background-clip: text; color: transparent;
-}
-.lab-intro { color: var(--muted); font-size: 1.05rem; }
-.wipe-controls {
-  display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1rem;
-  margin-bottom: 1rem; padding: .9rem 1.1rem;
-  background: rgb(255 255 255 / .7); border: 1px solid var(--rule); border-radius: 14px;
-}
-.wipe-controls label { font-weight: 700; }
-.wipe-controls input[type=range] { flex: 1 1 14rem; accent-color: var(--link); min-height: 2rem; }
-.wipe-controls output { font: 600 .9rem ui-monospace, Menlo, monospace; min-width: 15ch; }
-.wipe-jumps { display: flex; gap: .4rem; }
-.lab button {
-  font: inherit; font-size: .9rem; cursor: pointer; color: var(--ink);
-  background: #fff; border: 1px solid var(--rule); border-radius: 8px; padding: .45rem .8rem;
-}
-.lab button:hover { border-color: var(--link); }
-.lab button[aria-pressed=true] { background: var(--ink); color: #fff; border-color: var(--ink); }
-.lab button:focus-visible, .lab input:focus-visible, .code:focus-visible { outline: 3px solid var(--link); outline-offset: 2px; }
-
-.stage {
-  --wipe: 50%;
-  position: relative; height: min(78vh, 46rem);
-  border-radius: 18px; overflow: hidden;
-  border: 3px solid var(--ink);
-  box-shadow: 12px 12px 0 var(--ink);
-  background: #fff;
-}
-.frame { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: #fff; }
-.frame-then { clip-path: inset(0 calc(100% - var(--wipe)) 0 0); }
-.stage-seam {
-  position: absolute; top: 0; bottom: 0; left: var(--wipe); width: 4px; margin-left: -2px;
-  background: repeating-linear-gradient(#b42318 0 12px, #1d4ed8 12px 24px); pointer-events: none;
-}
-.stage-tag {
-  position: absolute; top: .75rem; padding: .25rem .6rem; border-radius: 6px;
-  font: 800 .85rem ui-monospace, Menlo, monospace; color: #fff; pointer-events: none;
-}
-.stage-tag-then { left: .75rem; background: #b42318; }
-.stage-tag-now { right: .75rem; background: #1d4ed8; }
-
-.source {
-  display: grid; grid-template-columns: minmax(0, 20rem) minmax(0, 1fr); gap: 1.5rem;
-  margin-top: 2.5rem; align-items: start;
-}
-.source-title { text-transform: none; letter-spacing: 0; text-align: left; color: var(--ink); margin: 0 0 1rem; font-size: 1.3rem; }
-.source-notes ol { margin: 0; padding: 0; list-style: none; counter-reset: n; display: grid; gap: .5rem; }
-.source-notes li { counter-increment: n; }
-.source-notes button { width: 100%; text-align: left; display: block; line-height: 1.5; }
-.source-notes button::before { content: counter(n); font-weight: 900; color: #b42318; margin-right: .6rem; }
-.source-notes code { font-size: .85em; background: var(--sky); padding: 0 .2em; border-radius: 3px; }
-.code {
-  margin: 0; padding: 1.25rem 0; max-height: 26rem; overflow: auto;
-  background: #0e1726; color: #d6e2f0; border-radius: 14px;
-  font: .85rem/1.7 ui-monospace, Menlo, Consolas, monospace;
-}
-.code .ln { display: block; padding: 0 1.25rem 0 0; white-space: pre; }
-.code .ln::before { content: attr(data-n); display: inline-block; width: 3rem; padding-right: 1rem; text-align: right; color: #5b6b80; user-select: none; }
-.code .ln.is-hit { background: rgb(253 224 71 / .18); box-shadow: inset 4px 0 0 #fde047; }
-.t-punc { color: #7b8ba1; }
-.t-tag { color: #7dd3fc; font-weight: 700; }
-.t-legacy { color: #fca5a5; text-decoration: wavy underline #f87171; }
-.t-attr { color: #c4b5fd; }
-.t-inline { color: #fca5a5; }
-.t-val { color: #86efac; }
-.t-doc, .t-com { color: #94a3b8; font-style: italic; }
-@media (max-width: 48rem) {
-  .source { grid-template-columns: 1fr; }
-  .stage { height: 70vh; box-shadow: 6px 6px 0 var(--ink); }
-}
-
-/* ---- challenge: fix my first page ---- */
-.fix[hidden] { display: none; }
-.fix { max-width: 76rem; margin: 2rem auto 5rem; padding: 0 1.5rem; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
-.fix .fix-title {
-  border: 0; padding: 0; margin: 0 0 .75rem;
-  font-size: clamp(2.6rem, 9vw, 5.5rem); font-weight: 900; letter-spacing: -.045em; color: var(--ink);
-}
-.fix-tasks { list-style: none; margin: 0 auto 1rem; padding: 0; max-width: 52rem; display: grid; gap: .6rem; }
-.fix-tasks li {
-  display: grid; grid-template-columns: auto 1fr auto; gap: .9rem; align-items: center;
-  padding: .85rem 1.1rem; background: #fff; border: 2px solid var(--rule); border-radius: .9rem;
-}
-.fix-dot { width: 1.1rem; height: 1.1rem; border-radius: 50%; border: 3px solid var(--accent); }
-.fix-state { font-style: normal; font-weight: 800; font-size: .85rem; color: var(--accent); }
-.fix-tasks li.is-ok { border-color: #157347; background: #e8f7ee; }
-.fix-tasks li.is-ok .fix-dot { background: #157347; border-color: #157347; }
-.fix-tasks li.is-ok .fix-state { color: #0f5132; }
-.fix-score { text-align: center; font-weight: 800; font-size: 1.1rem; margin: 0 0 1.25rem; }
-.fix.is-solved .fix-score { color: #0f5132; }
-.fix-work { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-.fix-pane { display: flex; flex-direction: column; gap: .5rem; min-width: 0; }
-.fix-pane label, .fix-label { font-weight: 800; font-size: .9rem; }
-.fix-pane textarea {
-  width: 100%; min-height: 26rem; resize: vertical; padding: 1rem;
-  font: .85rem/1.55 ui-monospace, Menlo, monospace; color: #e6edf3; background: #0d1b2e;
-  border: 0; border-radius: .9rem; tab-size: 2;
-}
-.fix-pane textarea:focus-visible { outline: 3px solid var(--link); outline-offset: 2px; }
-.fix-preview { width: 100%; min-height: 26rem; flex: 1; border: 2px solid var(--rule); border-radius: .9rem; background: #fff; }
-.fix-reset {
-  align-self: flex-start; font: inherit; font-weight: 700; padding: .5rem 1rem; cursor: pointer;
-  color: var(--ink); background: #fff; border: 2px solid var(--ink); border-radius: 999px;
-}
-@media (max-width: 48rem) { .fix-work { grid-template-columns: 1fr; } }
-
-/* Motion: on when the switch (or, without a choice, the OS) says so. */
-:root[data-motion="on"] { scroll-behavior: smooth; }
-@media (prefers-reduced-motion: no-preference) {
-  :root:not([data-motion]) { scroll-behavior: smooth; }
-}
-
-/* Link to the anatomy page */
-.to-anatomy { max-width: 76rem; margin: 2rem auto 4rem; padding: 1.5rem; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background: var(--ink); color: var(--sky); border-radius: 14px; }
-.to-anatomy h2 { border: 0; padding: 0; margin: 0.25rem 0 0.5rem; }
-.to-anatomy .lab-kicker { color: var(--course-accent); }
-.to-anatomy a { color: var(--course-accent); font-weight: 700; }
-@media (min-width: 60rem) { .to-anatomy { margin-inline: auto; width: calc(100% - 3rem); } }
-.is-embedded .to-anatomy { display: none !important; }
