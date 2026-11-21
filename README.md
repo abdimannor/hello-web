@@ -26,7 +26,7 @@ The page is my first HTML exercise from 2023, written at the very start of a web
 
   Roles and names are computed in `anatomy.js` for the elements that occur on the two pages, following [HTML-AAM](https://www.w3.org/TR/html-aam-1.0/) and [accname 1.2](https://www.w3.org/TR/accname-1.2/); every rule is linked on the page. It is a teaching model for these elements, not a full implementation, and the spoken lines are approximate, since VoiceOver, NVDA and JAWS phrase things differently.
 
-The course bar, next-lesson block and motion switch come from `course.css` and `course.js`, identical in all four repos. Animation follows the motion switch, so it stays off when the system asks for reduced motion until you turn it on.
+The course bar, next-lesson block and motion switch come from `course.css` and `course.js`, which share one design with the other three lessons. Motion is on by default; the pause button turns it off and the choice is remembered.
 
 ## Run it
 

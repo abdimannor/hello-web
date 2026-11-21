@@ -20,7 +20,7 @@ Sidan är min första HTML-uppgift från 2023, skriven i början av en webbkurs.
 - **Laga min första sida:** rätta originalet i en editor med förhandsvisning; tre kontroller (rubrikordning, alt-text, ingen `<center>`).
 - **Anatomi** (`anatomi.html`, ny): koden från 2023 som fyra uträknade lager, med en knapp för att byta till en semantisk version av samma text: DOM-trädet, rubrikstrukturen (hoppade nivåer markeras enligt [HTML-standarden](https://html.spec.whatwg.org/multipage/sections.html#headings-and-outlines-2)), landmärken, och tillgänglighetsträdet med en uppläsning i skärmläsarstil. Roller och namn räknas fram i `anatomy.js` enligt [HTML-AAM](https://www.w3.org/TR/html-aam-1.0/) och [accname 1.2](https://www.w3.org/TR/accname-1.2/), för de element som finns på sidorna. Det är en förenklad modell, och uppläsningen är ungefärlig eftersom VoiceOver, NVDA och JAWS formulerar sig olika.
 
-Kursraden, nästa-lektion-blocket och rörelseknappen kommer från `course.css` och `course.js`, som är likadana i alla fyra repon. Animationer följer rörelseknappen och är avstängda när systemet ber om minskad rörelse, tills du slår på dem.
+Kursraden, nästa-lektion-blocket och rörelseknappen kommer från `course.css` och `course.js`, med samma formspråk som de tre andra lektionerna. Rörelse är på från början; pausknappen stänger av den och valet sparas.
 
 ## Kör den
 
