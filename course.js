@@ -1,13 +1,14 @@
-/* Course bar: challenge progress per site and the motion switch. Shared by all four lessons. */
+/* Webbkursen: challenge progress per site and the motion button. Shared by all four lessons. */
 (() => {
   'use strict';
-  /* Framed copies of the page (previews) carry no course chrome. */
+  /* Framed copies of a page (previews) carry no course chrome. */
   if (window.self !== window.top) {
     for (const el of document.querySelectorAll('.course-bar, .course-next')) el.remove();
     return;
   }
   const KEY = 'course-done';
   const SEEN = 'course-progress';
+  const MOTION = 'motion';
   const store = {
     get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
     set(k, v) { try { localStorage.setItem(k, v); } catch (e) { /* private mode */ } },
@@ -36,10 +37,10 @@
       const m = li.querySelector('.course-mark');
       if (m) m.hidden = !now.includes(i + 1);
     });
-    /* Pass the progress along on every course link (other sites only). */
+    /* Pass the progress along on every course link to another site. */
     for (const a of document.querySelectorAll('.course-bar a, .course-next a')) {
+      if (a.origin === location.origin) continue;
       const url = a.href.split('#')[0];
-      if (url === location.href.split('#')[0]) continue;
       a.href = now.length ? url + '#done=' + now.join(',') : url;
     }
     complete(now);
@@ -70,8 +71,8 @@
     items.forEach((li, i) => {
       const item = document.createElement('li');
       const name = document.createElement('strong');
-      const link = li.querySelector('a');
-      name.textContent = link ? link.firstChild.nextSibling.textContent.trim() : '';
+      const title = li.querySelector('.course-title');
+      name.textContent = title ? title.textContent.trim() : '';
       const num = document.createElement('span');
       num.className = 'course-num';
       num.textContent = 'Lektion ' + (i + 1);
@@ -85,17 +86,21 @@
   window.courseDone = () => { store.set(KEY, '1'); paint(); };
   paint();
 
-  const btn = document.querySelector('.course-motion button');
+  /* Motion is on unless the visitor turns it off; html[data-motion] is the only switch. */
+  const btn = document.querySelector('.course-motion');
   if (!btn) return;
   const root = document.documentElement;
+  const sv = (document.querySelector('.course-bar') || root).closest('[lang]').lang.startsWith('sv');
+  const label = (on) => (sv ? (on ? 'Pausa r\u00f6relse' : 'Starta r\u00f6relse') : (on ? 'Pause motion' : 'Play motion'));
   function show() {
-    const on = root.dataset.motion === 'on';
+    const on = root.dataset.motion !== 'off';
     btn.setAttribute('aria-pressed', String(on));
-    btn.textContent = on ? 'R\u00f6relse: p\u00e5' : 'R\u00f6relse: av';
+    btn.setAttribute('aria-label', label(on));
+    btn.title = label(on);
   }
   btn.addEventListener('click', () => {
-    root.dataset.motion = root.dataset.motion === 'on' ? 'off' : 'on';
-    store.set('motion', root.dataset.motion);
+    root.dataset.motion = root.dataset.motion === 'off' ? 'on' : 'off';
+    store.set(MOTION, root.dataset.motion);
     show();
   });
   show();
