@@ -1,0 +1,58 @@
+/* Anatomy page: four layers of the same page. Dark "inspector" world on the lesson's sky. */
+.ana { max-width: 82rem; margin: 0 auto; padding: clamp(2rem, 6vw, 4.5rem) 1.5rem 3rem; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.ana-head { max-width: 46rem; }
+.ana-head h1 { font-size: clamp(2rem, 5vw, 3.2rem); text-align: left; }
+.ana-intro { font: 400 1.15rem/1.6 Georgia, "Iowan Old Style", serif; }
+.ana-back a { color: var(--link); }
+.ana-switch { display: inline-flex; gap: 0; margin: 1.5rem 0 0.75rem; border: 2px solid var(--ink); border-radius: 999px; overflow: hidden; background: #fff; }
+.ana-switch button { font: 600 1rem system-ui, sans-serif; border: 0; padding: 0.7rem 1.2rem; background: transparent; color: var(--ink); cursor: pointer; }
+.ana-switch button[aria-pressed="true"] { background: var(--ink); color: var(--sky); }
+.ana-switch button:focus-visible { outline: 3px solid var(--accent); outline-offset: -5px; }
+.ana-status { margin: 0 0 1rem; color: var(--muted); }
+.ana-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); gap: 0.6rem; margin: 0 0 2rem; }
+.ana-facts div { background: #fff; border: 1px solid var(--rule); border-radius: 10px; padding: 0.7rem 0.9rem; }
+.ana-facts dt { font-size: 0.85rem; color: var(--muted); }
+.ana-facts dd { margin: 0.15rem 0 0; font-size: 1.6rem; font-weight: 800; }
+.ana-grid { display: grid; gap: 1.25rem; grid-template-columns: 1fr; }
+@media (min-width: 62rem) { .ana-grid { grid-template-columns: 1fr 1fr; } .ana-panel-src { grid-row: span 2; } }
+.ana-panel { background: #0f1a30; color: #dceefe; border-radius: 16px; padding: 1.25rem 1.25rem 1.5rem; min-width: 0; }
+.ana-panel h2 { margin: 0 0 0.5rem; padding: 0; border: 0; font-size: 1.3rem; color: #fff; }
+.ana-panel p { font-size: 0.95rem; line-height: 1.55; color: #b9cfe6; }
+.ana-panel a { color: #ffd166; }
+.ana-panel code { color: #ffd166; }
+.ana-n { display: inline-grid; place-items: center; width: 1.7em; height: 1.7em; margin-right: 0.4rem; border-radius: 50%; background: #ffd166; color: #0f1a30; font-size: 0.85em; }
+.ana-code { margin: 0; max-height: 34rem; overflow: auto; background: #08111f; border-radius: 10px; padding: 1rem; font: 0.82rem/1.55 ui-monospace, Menlo, monospace; white-space: pre-wrap; word-break: break-word; }
+.ana-code code { color: #dceefe; }
+.ana-tree { max-height: 30rem; overflow: auto; background: #08111f; border-radius: 10px; padding: 0.75rem; font: 0.8rem/1.6 ui-monospace, Menlo, monospace; }
+.ana-tree ul { list-style: none; margin: 0; padding-left: 1.1rem; border-left: 1px dashed #36507a; }
+.ana-tree .dom-root { border: 0; padding: 0; }
+.dom-tag { color: #8fd3ff; font-weight: 700; }
+.dom-tag.is-legacy { color: #ff9b8f; text-decoration: wavy underline; }
+.dom-attr { color: #c8b6ff; }
+.dom-q { color: #a6e3a1; }
+.ana-outline, .ana-landmarks, .ana-ax, .ana-sr { list-style: none; margin: 0; padding: 0; }
+.out-h { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: baseline; margin: 0.35rem 0 0.35rem calc((var(--lvl) - 1) * 1.4rem); }
+.out-lvl { font: 700 0.8rem ui-monospace, monospace; background: #8fd3ff; color: #0f1a30; padding: 0.1rem 0.4rem; border-radius: 4px; }
+.out-h.is-skip .out-lvl { background: #ff9b8f; }
+.out-warn { font-size: 0.8rem; color: #ff9b8f; }
+.ana-landmarks li { display: flex; gap: 0.6rem; padding: 0.5rem 0.7rem; border: 2px solid #8fd3ff; border-radius: 8px; }
+.ana-landmarks .lm-none { border-style: dashed; border-color: #ff9b8f; color: #ffcfc8; }
+.lm-role { font-weight: 800; }
+.lm-el { font-family: ui-monospace, monospace; color: #c8b6ff; }
+.ax-node { display: flex; gap: 0.5rem; padding: 0.2rem 0 0.2rem calc(var(--d) * 1.3rem); font-size: 0.9rem; border-left: 0; }
+.ax-role { font: 700 0.8rem ui-monospace, monospace; color: #8fd3ff; white-space: nowrap; }
+.ax-name { color: #dceefe; overflow-wrap: anywhere; }
+.ax-node.is-warn .ax-role, .ax-node.is-warn .ax-name { color: #ff9b8f; }
+.ana-sr { counter-reset: sr; }
+.ana-sr li { position: relative; padding: 0.45rem 0 0.45rem 2.2rem; border-bottom: 1px solid #23365a; font-size: 0.95rem; }
+.ana-sr li::before { counter-increment: sr; content: counter(sr); position: absolute; left: 0; top: 0.5rem; font: 700 0.75rem ui-monospace, monospace; color: #ffd166; }
+.ana-sr .is-warn { color: #ffcfc8; }
+.ana-rules { max-width: 52rem; margin: 3rem 0 1rem; }
+.ana-rules h2 { border-top: 1px solid var(--rule); }
+.ana-rules li { margin: 0.5rem 0; line-height: 1.55; }
+.ana-rules a { color: var(--link); }
+/* Motion: new tree rows slide in, only when the motion switch is on. */
+:root[data-motion="on"] .ana[data-version] .ax-node,
+:root[data-motion="on"] .ana[data-version] .sr-line,
+:root[data-motion="on"] .ana[data-version] .out-h { animation: ana-in 0.45s ease both; }
+@keyframes ana-in { from { opacity: 0; transform: translateX(-0.6rem); } }

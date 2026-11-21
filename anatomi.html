@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <script>(()=>{let m=null;try{m=localStorage.getItem('motion')}catch(e){}document.documentElement.dataset.motion=m==='on'||m==='off'?m:(matchMedia('(prefers-reduced-motion: reduce)').matches?'off':'on')})()</script>
+  <title>Anatomi: hur en sida läses | Hello Web</title>
+  <meta name="description" content="Den första HTML-sidan från 2023 som DOM-träd, rubrikstruktur, landmärken och tillgänglighetsträd, bredvid en semantisk version.">
+  <meta property="og:title" content="Hello Web">
+  <meta property="og:description" content="Den första HTML-sidan från 2023 som DOM-träd, rubrikstruktur, landmärken och tillgänglighetsträd, bredvid en semantisk version.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hello Web">
+  <meta name="twitter:description" content="Den första HTML-sidan från 2023 som DOM-träd, rubrikstruktur, landmärken och tillgänglighetsträd, bredvid en semantisk version.">
+  <meta property="og:image" content="https://hello-web-kappa.vercel.app/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Screenshot of the Hello Web page">
+  <meta name="twitter:image" content="https://hello-web-kappa.vercel.app/og.png">
+  <meta name="twitter:image:alt" content="Screenshot of the Hello Web page">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="course.css">
+  <link rel="stylesheet" href="anatomy.css">
+</head>
+<body>
+  <nav class="course-bar" lang="sv" aria-label="Kursen">
+    <p class="course-name">Kurs</p>
+    <ol>
+      <li><a href="https://hello-web-kappa.vercel.app/" aria-current="page"><span class="course-num">Lektion 1</span> Hello Web<span class="course-mark" hidden> &#10003; Klar</span></a></li>
+      <li><a href="https://tech-world-zeta.vercel.app/"><span class="course-num">Lektion 2</span> Tech World<span class="course-mark" hidden> &#10003; Klar</span></a></li>
+      <li><a href="https://link-lab-flax.vercel.app/"><span class="course-num">Lektion 3</span> Link Lab<span class="course-mark" hidden> &#10003; Klar</span></a></li>
+      <li><a href="https://dress-code-bay.vercel.app/"><span class="course-num">Lektion 4</span> Dress Code<span class="course-mark" hidden> &#10003; Klar</span></a></li>
+    </ol>
+    <span class="course-motion"><button type="button" aria-pressed="false">R&ouml;relse</button></span>
+  </nav>
+    <main class="ana" id="anatomy" hidden>
+    <header class="ana-head">
+      <p class="lab-kicker">Lektion 1, fördjupning</p>
+      <h1>Anatomi: hur webbläsaren och skärmläsaren läser sidan</h1>
+      <p class="ana-intro">Du ser sidan med ögonen. Webbläsaren ser ett träd av element, och en skärmläsare ser ett annat träd, byggt av roller och namn. Här visas originalet från 2023 i alla fyra lager. Byt till den semantiska versionen och se vad som ändras.</p>
+      <p class="ana-back"><a href="./">&larr; Tillbaka till sidan</a></p>
+    </header>
+
+    <div class="ana-switch" role="group" aria-label="Version av sidan">
+      <button type="button" data-version-btn="2023" aria-pressed="true">2023, som den skrevs</button>
+      <button type="button" data-version-btn="semantic" aria-pressed="false">Semantisk version</button>
+    </div>
+    <p class="ana-status" id="ana-status" role="status" aria-live="polite"></p>
+    <dl class="ana-facts" id="ana-facts"></dl>
+
+    <div class="ana-grid">
+      <section class="ana-panel ana-panel-src" aria-labelledby="h-src">
+        <h2 id="h-src"><span class="ana-n">0</span> Källkoden</h2>
+        <p>Det som står i filen. Allt annat på sidan räknas fram ur den här texten.</p>
+        <pre class="ana-code" tabindex="0" aria-labelledby="h-src"><code id="ana-source"></code></pre>
+      </section>
+
+      <section class="ana-panel" aria-labelledby="h-dom">
+        <h2 id="h-dom"><span class="ana-n">1</span> DOM-trädet</h2>
+        <p>Webbläsaren tolkar koden och bygger ett träd av noder: element och text. Tolkningen följer reglerna i HTML-standarden, så även kod med fel blir ett träd. Lägg märke till att <code>&lt;head&gt;</code> och <code>&lt;body&gt;</code> alltid finns, och att <code>&lt;center&gt;</code> fortfarande blir ett element fast det är <a href="https://html.spec.whatwg.org/multipage/obsolete.html#non-conforming-features">utfasat</a>.</p>
+        <div class="ana-tree" id="ana-dom" tabindex="0" role="region" aria-label="DOM-trädet"></div>
+      </section>
+
+      <section class="ana-panel" aria-labelledby="h-out">
+        <h2 id="h-out"><span class="ana-n">2</span> Rubrikstrukturen</h2>
+        <p>Rubrikerna i ordning. Många skärmläsaranvändare hoppar mellan rubriker för att få en överblick. HTML-standarden säger att en rubrik bara får gå <a href="https://html.spec.whatwg.org/multipage/sections.html#headings-and-outlines-2">en nivå djupare än rubriken före</a>.</p>
+        <ol class="ana-outline" id="ana-outline"></ol>
+      </section>
+
+      <section class="ana-panel" aria-labelledby="h-lm">
+        <h2 id="h-lm"><span class="ana-n">3</span> Landmärken</h2>
+        <p>Landmärken är sidans regioner, som skärmläsaren kan hoppa direkt till. Elementet <code>&lt;main&gt;</code> får rollen <a href="https://www.w3.org/TR/html-aam-1.0/#el-main">main</a>. Vanliga <code>&lt;p&gt;</code> och <code>&lt;center&gt;</code> skapar inga landmärken.</p>
+        <ul class="ana-landmarks" id="ana-landmarks"></ul>
+      </section>
+
+      <section class="ana-panel" aria-labelledby="h-ax">
+        <h2 id="h-ax"><span class="ana-n">4</span> Tillgänglighetsträdet</h2>
+        <p>Webbläsaren bygger ett <a href="https://developer.mozilla.org/en-US/docs/Glossary/Accessibility_tree">tillgänglighetsträd</a> ur DOM:en. Varje nod har en roll och ofta ett namn. Element utan egen roll, som <code>&lt;body&gt;</code> (<a href="https://www.w3.org/TR/html-aam-1.0/#el-body">generic</a>) och <code>&lt;center&gt;</code>, visas inte här; deras barn flyttar upp.</p>
+        <ul class="ana-ax" id="ana-ax"></ul>
+      </section>
+
+      <section class="ana-panel ana-panel-sr" aria-labelledby="h-sr">
+        <h2 id="h-sr"><span class="ana-n">5</span> Så låter det</h2>
+        <p>Ungefär så här läser en skärmläsare sidan uppifrån och ned. Den exakta formuleringen skiljer sig mellan VoiceOver, NVDA och JAWS, men rollerna och namnen är de som trädet ger.</p>
+        <ol class="ana-sr" id="ana-sr"></ol>
+      </section>
+    </div>
+
+    <section class="ana-rules" aria-labelledby="h-rules">
+      <h2 id="h-rules">Reglerna bakom vyerna</h2>
+      <p>Rollerna och namnen räknas fram i <code>anatomy.js</code> för de element som finns på de två sidorna, enligt de här reglerna:</p>
+      <ul>
+        <li><code>&lt;h1&gt;</code> till <code>&lt;h6&gt;</code> får rollen heading med nivån från taggens siffra: <a href="https://www.w3.org/TR/html-aam-1.0/#el-h1-h6">HTML-AAM, h1 till h6</a>. Namnet kommer från innehållet: <a href="https://www.w3.org/TR/accname-1.2/#step2F">accname, steg 2F</a>.</li>
+        <li><code>&lt;p&gt;</code> får rollen paragraph: <a href="https://www.w3.org/TR/html-aam-1.0/#el-p">HTML-AAM, p</a>.</li>
+        <li><code>&lt;a href&gt;</code> får rollen link och namnet från länktexten: <a href="https://www.w3.org/TR/html-aam-1.0/#el-a">HTML-AAM, a</a>.</li>
+        <li><code>&lt;img&gt;</code> får rollen img och namnet från <code>alt</code>: <a href="https://www.w3.org/TR/html-aam-1.0/#el-img">HTML-AAM, img</a> och <a href="https://www.w3.org/TR/html-aam-1.0/#img-element-accessible-name-computation">namnberäkning för img</a>. Med <code>alt=""</code> blir bilden dekoration och försvinner ur trädet: <a href="https://www.w3.org/TR/html-aam-1.0/#el-img-empty-alt">HTML-AAM, tom alt</a>. Saknas <code>alt</code> helt kan vissa skärmläsare <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/img">läsa upp filnamnet</a> (MDN).</li>
+        <li><code>&lt;figure&gt;</code> får rollen figure: <a href="https://www.w3.org/TR/html-aam-1.0/#el-figure">HTML-AAM, figure</a>. Här visas bildtexten i <code>&lt;figcaption&gt;</code> som figurens namn.</li>
+        <li><code>&lt;html&gt;</code> och <code>&lt;body&gt;</code> har rollen generic, som inte läses upp: <a href="https://www.w3.org/TR/html-aam-1.0/#el-html">HTML-AAM, html</a>. <code>&lt;center&gt;</code> har ingen egen rad i HTML-AAM och behandlas här likadant.</li>
+      </ul>
+      <p>Det här är en förenklad modell för just de här elementen, inte en fullständig implementation. Webbläsarens eget träd kan du se i utvecklarverktygen, till exempel i <a href="https://developer.chrome.com/docs/devtools/accessibility/reference">Chromes panel Accessibility</a>.</p>
+    </section>
+  </main>
+  <nav class="course-next" lang="sv" aria-label="N&auml;sta lektion">
+    <p>N&auml;sta lektion</p>
+    <a href="https://tech-world-zeta.vercel.app/">Lektion 2: Tech World &rarr;</a>
+  </nav>
+  <script src="lab.js" defer></script>
+  <script src="anatomy.js" defer></script>
+  <script src="course.js" defer></script>
+</body>
+</html>
